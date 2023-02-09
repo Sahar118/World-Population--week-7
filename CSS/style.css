@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Merienda:wght@800&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Press+Start+2P&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    height: 100vmin;
+    width: 100%;
+}
+#container{
+    margin: auto;
+    height: 100%;
+    width: 100%;
+
+}
+.main-container{
+    background: url(/IMG/background.png) no-repeat center center/cover;
+    height: 70%;
+    width:70%;
+    /* margin: auto; */
+    position: relative;
+    top: 5%;
+    right: -10%;
+}
+
+#title{
+    text-align: center;
+    font-size: 350%;
+    font-weight: 800;
+    font-family: 'Lilita One', cursive;
+    background: linear-gradient(to right, rgba(255, 215, 255, 0) 0%, rgba(255, 226, 225, 0.5) 20%, rgba(255, 255, 255, 0) 61%), linear-gradient(rgb(97, 183, 217) 52%, rgb(224, 246, 255) 60%, rgb(78, 99, 132) 61%); /* you can change the colors based on your preference */
+    background-clip: text; 
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: wave 2000ms ease alternate infinite;
+    transition: all 0.4s ease;
+  }
+  @keyframes wave {
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 50vw 10px;
+
+}
+  }
+#continents-container{
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    
+}
+.continents-btn{
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 5%;
+    margin-inline: 3%;
+    padding-inline: 1.5%;
+    font-family: 'Lilita One', cursive;
+    font-size: 70%;
+    font-weight:900;
+    background-color: transparent;
+    border:none;
+    position: relative;
+    top: 5%;
+    left: 130%;
+    width: 20%;
+    height: 60%;
+    cursor: pointer;
+}
+img{
+    height: 40px;
+    width: 40px;
+}
+#europe-btn{
+    color:red;
+}
+
+#asia-btn{
+    color:rgb(5, 107, 5);
+}
+
+#australia-btn{
+    color:steelblue;
+}
+
+#northA-btn{
+color: orange;
+}
+#southA-btn{
+color: rgb(42, 166, 168);
+}
+#africa-btn{
+color: gold;
+}
