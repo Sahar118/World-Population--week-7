@@ -9,83 +9,94 @@ body{
     height: 100vmin;
     width: 100%;
 }
-#container{
-    margin: auto;
-    height: 100%;
-    width: 100%;
-
-}
-.main-container{
-    background: url(/IMG/background.png) no-repeat center center/cover;
-    height: 70%;
-    width:70%;
-    /* margin: auto; */
-    position: relative;
-    top: 5%;
-    right: -10%;
-}
 
 #title{
     text-align: center;
-    font-size: 350%;
+    font-size: 600%;
     font-weight: 800;
+    margin-top: 1%;
     font-family: 'Lilita One', cursive;
-    background: linear-gradient(to right, rgba(255, 215, 255, 0) 0%, rgba(255, 226, 225, 0.5) 20%, rgba(255, 255, 255, 0) 61%), linear-gradient(rgb(97, 183, 217) 52%, rgb(224, 246, 255) 60%, rgb(78, 99, 132) 61%); /* you can change the colors based on your preference */
+    background: linear-gradient(to right, rgba(255, 215, 255, 0) 0%, rgba(255, 226, 225, 0.5) 20%, rgba(255, 255, 255, 0) 61%), linear-gradient(rgb(217, 101, 97) 52%, rgb(253, 255, 224) 60%, rgb(132, 78, 78) 61%); /* you can change the colors based on your preference */
     background-clip: text; 
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     animation: wave 2000ms ease alternate infinite;
     transition: all 0.4s ease;
-  }
-  @keyframes wave {
+}
+@keyframes wave {
     0% {
-      background-position: 0 0;
+    background-position: 0 0;
     }
     100% {
-      background-position: 50vw 10px;
+    background-position: 50vw 10px;
+}}
+#container{
+    height: 100%;
+    width: 100%;
+    display: flex;
 
 }
-  }
+.main-container{
+    background: url(/IMG/background.png) no-repeat center center/cover;
+    height: 80%;
+    width:60%;
+    position: relative;
+    top: -10%;
+
+}
+
 #continents-container{
     display: flex;
     flex-direction: column;
     width: 80%;
+    position: relative;
+    top: 25%;
+    left: 30%;
     
 }
 .continents-btn{
     display: flex;
     justify-content: space-evenly;
-    padding-top: 5%;
+    padding-top: 3.5%;
     margin-inline: 3%;
     padding-inline: 1.5%;
     font-family: 'Lilita One', cursive;
-    font-size: 70%;
+    font-size:120%;
     font-weight:900;
     background-color: transparent;
     border:none;
     position: relative;
-    top: 5%;
-    left: 130%;
+
+    left: 100%;
     width: 20%;
-    height: 60%;
+    height: 50%;
     cursor: pointer;
 }
 img{
-    height: 40px;
-    width: 40px;
+    height: 40%;
+    width: 40%;
+}
+
+#europe-btn:hover,
+#asia-btn:hover,
+#australia-btn:hover,
+#northA-btn:hover,
+#southA-btn:hover,
+#africa-btn:hover
+{
+    /* border: 1px black solid ; */
+    color: black;
+    font-size: 150%;
 }
 #europe-btn{
     color:red;
 }
-
 #asia-btn{
     color:rgb(5, 107, 5);
 }
-
 #australia-btn{
     color:steelblue;
 }
-
 #northA-btn{
 color: orange;
 }
@@ -94,4 +105,46 @@ color: rgb(42, 166, 168);
 }
 #africa-btn{
 color: gold;
+}
+
+#left-container{
+    width: 20%;
+    height: 70%;
+    /* background-color: yellowgreen; */
+    position: relative;
+    top: 20%;
+}
+
+#flag-container{
+    height: 252px;
+    background-color: white;
+    border: 1px solid #333;
+}
+
+#info-container select{
+    display: block;
+    margin: 20px auto;
+    padding: 5px;
+    min-width: 100%;
+    color: #333;
+    font-size: 15px;
+    font-weight: 900;
+    text-align-last: center;
+}
+
+#info-container p{
+    padding: 0 10px;
+    font-weight: 600;
+    line-height: 180%;
+}
+#info-container p span{
+    font-weight: normal;
+}
+
+@media (max-width: 768px) {
+    body{
+        font-size: 12px;
+    }
+    
+    
 }
