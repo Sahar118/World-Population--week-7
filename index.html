@@ -1,52 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./CSS/style.css">
-    <title> World Population</title>
-    <script src="./js/app.js" defer></script>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="/style/normalize.css">
+   <link rel="stylesheet" href="/CSS/style.css">
+   <link rel="stylesheet" href="/CSS/media.css">
+   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+   <script src="./js/app.js" defer></script>
+   <title>Document</title>
 </head>
 <body>
-    <div id="title"> The World Population</div>
-    <section id="container">
-        <!-- Main Container -->
-        <div id="left-container">
-            <div id="flag-container">
-                <img src="" alt="">
-            </div>
-            <div id="info-container">
-                <select id="countries">
-                    <option value="a">A</option>
-                    <option value="b">B</option>
-                    <option value="c">C</option>
-                </select>
-                <p>Capital: <span id="capital"></span></p>
-                <p>Dialing Code: <span id="dialing-code"></span></p>
-                <p>Population:<span id="population"></span></p>
-                <p>Currencies:<span id="currencies"></span></p>
-                <p>Region:<span id="region"></span></p>
-                <p>Subregion:<span id="subregion"></span></p>
 
+   <h2 id="title">World Population </h2>
+   <section class="p1">
+   <div class="flex">
+   <div class="continentBtnContainer">
+      <button id="africa-btn" class="continents-btn"><img class="img-cont" src="./IMG/africa-removebg-preview.png" height="40%" alt="">Africa</button>
+      <button id="americas-btn" class="continents-btn"><img class="img-cont" src="./IMG/south-removebg-preview.png" alt="">Americas</button>
+      <button id="asia-btn" class="continents-btn"><img class="img-cont" src="./IMG/asia-removebg-preview.png" height="30%" alt="">Asia</button>
+      <button id="europe-btn" class="continents-btn"><img class="img-cont" src="./IMG/europe-removebg-preview.png" height="10%" alt="">Europe</button>
+      <button id="australia-btn" class="continents-btn"><img class="img-cont" src="./IMG/australia-removebg-preview.png" height="10%" alt="">Oceania</button>
+   </div>
+   <div id="myChartContainer">
+      <canvas id="myChart">
+      </canvas>
+   </div>
+   </div>
+</section>
+<div class="cityCon">
+   <div id="citeisBtnsContainer"></div>
+</div>
+<div id="spinner-loading">
+   <img class="spinner" src="./IMG/childrens-removebg-preview.png"  alt=""  >
+   <p id="loading" class="line-1 anim-typewriter">loading ........</p>
+</div>
 
-            </div>
-
-        </div>
-        <div class="main-container">
-            <div id="continents-container">
-                    <button class="continents-btn" id="europe-btn"><img class="img-cont" src="./IMG/europe-removebg-preview.png" height="10%" alt=""> EUROPE</button>
-                    <button class="continents-btn" id="asia-btn"><img class="img-cont" src="./IMG/asia-removebg-preview.png" height="10%" alt="">ASIA</button>
-                    <button class="continents-btn" id="australia-btn"><img class="img-cont" src="./IMG/australia-removebg-preview.png" height="10%" alt="">AUSTRALIA</button>
-                    <button class="continents-btn" id="northA-btn"><img class="img-cont" src="./IMG/north-amirca-removebg-preview.png" height="10%" alt="">NORTH <br> AMERICA</button>
-                    <button class="continents-btn" id="southA-btn"><img class="img-cont" src="./IMG/south-removebg-preview.png" height="10%" alt="">SOUTH <br> AMERICA</button>
-                    <button class="continents-btn" id="africa-btn"><img class="img-cont" src="./IMG/africa-removebg-preview.png" height="10%" alt="">AFRICA</button>
-                </div>
-            <div id="chart"></div>
-        </div>
-        
-        <!-- Right Container -->
-
-    </section>
 </body>
 </html>

@@ -1,150 +1,244 @@
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@700&family=Merienda:wght@800&family=Open+Sans:ital,wght@0,300;0,400;1,300&family=Press+Start+2P&display=swap');
-
 *{
-    margin: 0;
-    padding: 0;
     box-sizing: border-box;
-}
-body{
-    height: 100vmin;
+    padding: 0;
+    margin: 0;
+ }
+  body{
+   font-family: 'Lilita One', cursive;
+    align-items: center;
+    height: 110vh;
     width: 100%;
+    background: linear-gradient(#7394b5, #ffff) no-repeat;
+   }
+   
+   .p1{
+   height: 100%;
+   width: 100%;
+   display: flex;
+   background: url(/IMG/back-g-removebg-preview.png) no-repeat center;
+   background-size: 25%;
+   background-clip: initial;
+   animation: animate 6s linear infinite;
 }
+@keyframes animate {
+   0% {
+   background-position: 0 -20px ;
+   }
+   100% {
+   background-position:  (100deg);
+}}
+
+.flex{
+   height: 70%;
+   width: 100%;
+   display: flex;
+   flex-direction: row;
+   justify-content:space-around;
+}
+#myChartContainer{
+   width: 70%;
+   height: 80%;
+   position: relative;
+   top: 8%;
+
+} 
+.continentBtnContainer{
+   padding: 5px;
+   margin-top: 6%;
+   height: 70%;
+}
+
+.continents-btn{
+   display: flex;
+   justify-content: space-evenly;
+   padding-top: 3.5%;
+   margin-inline: 3%;
+   padding-inline: 1.5%;
+   font-family: 'Lilita One', cursive;
+   font-size:120%;
+   font-weight:900;
+   background-color: transparent;
+   border:none;
+   width: 50%;
+   height: 15%;
+   cursor: pointer;
+   line-height: 220%;
+   position: relative;
+   left: 25%;
+   }
 
 #title{
-    text-align: center;
-    font-size: 600%;
-    font-weight: 800;
-    margin-top: 1%;
-    font-family: 'Lilita One', cursive;
-    background: linear-gradient(to right, rgba(255, 215, 255, 0) 0%, rgba(255, 226, 225, 0.5) 20%, rgba(255, 255, 255, 0) 61%), linear-gradient(rgb(217, 101, 97) 52%, rgb(253, 255, 224) 60%, rgb(132, 78, 78) 61%); /* you can change the colors based on your preference */
-    background-clip: text; 
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    animation: wave 2000ms ease alternate infinite;
-    transition: all 0.4s ease;
+   text-align: center;
+   font-size: 450%;
+   font-weight: 800;
+   margin-top: 1%;
+   font-family: 'Lilita One', cursive;
+   background: linear-gradient(to right, rgb(5, 107, 5) 0%,red 20%,  orange 61%), linear-gradient( yellow 52%, rgb(5, 107, 5) 60%,rgb(5, 107, 5) 61%); /* you can change the colors based on your preference */
+   background-clip: text; 
+   -webkit-background-clip: text;
+   -webkit-text-fill-color: transparent;
+   animation: wave 2000ms ease alternate infinite;
+   transition: all 0.4s ease;
 }
 @keyframes wave {
-    0% {
-    background-position: 0 0;
-    }
-    100% {
-    background-position: 50vw 10px;
+   0% {
+   background-position: 0 0;
+   }
+   100% {
+   background-position: 50vw 10px;
 }}
-#container{
-    height: 100%;
-    width: 100%;
-    display: flex;
 
+#europe-btn{
+   color:red;
 }
-.main-container{
-    background: url(/IMG/background.png) no-repeat center center/cover;
-    height: 80%;
-    width:60%;
-    position: relative;
-    top: -10%;
-
+#asia-btn{
+   color:rgb(5, 107, 5);
 }
-
-#continents-container{
-    display: flex;
-    flex-direction: column;
-    width: 80%;
-    position: relative;
-    top: 25%;
-    left: 30%;
-    
+#australia-btn{
+   color:steelblue;
 }
-.continents-btn{
-    display: flex;
-    justify-content: space-evenly;
-    padding-top: 3.5%;
-    margin-inline: 3%;
-    padding-inline: 1.5%;
-    font-family: 'Lilita One', cursive;
-    font-size:120%;
-    font-weight:900;
-    background-color: transparent;
-    border:none;
-    position: relative;
-
-    left: 100%;
-    width: 20%;
-    height: 50%;
-    cursor: pointer;
+#northA-btn{
+   color: orange;
 }
-img{
-    height: 40%;
-    width: 40%;
+#americas-btn{
+   color: rgb(42, 166, 168);
 }
-
+#africa-btn{
+   color: gold;
+}
 #europe-btn:hover,
 #asia-btn:hover,
 #australia-btn:hover,
 #northA-btn:hover,
-#southA-btn:hover,
+#americas-btn:hover,
 #africa-btn:hover
 {
-    /* border: 1px black solid ; */
-    color: black;
-    font-size: 150%;
+   /* border: 1px black solid ; */
+   color: black;
+   font-size: 150%;
 }
-#europe-btn{
-    color:red;
-}
-#asia-btn{
-    color:rgb(5, 107, 5);
-}
-#australia-btn{
-    color:steelblue;
-}
-#northA-btn{
-color: orange;
-}
-#southA-btn{
-color: rgb(42, 166, 168);
-}
-#africa-btn{
-color: gold;
-}
+.img-cont{
+   height: 80%;
+   width: 80%;
+} 
+
 
 #left-container{
-    width: 20%;
-    height: 70%;
-    /* background-color: yellowgreen; */
-    position: relative;
-    top: 20%;
+   width: 20%;
+   height: 80%;
 }
 
 #flag-container{
-    height: 252px;
-    background-color: white;
-    border: 1px solid #333;
+   height: 10%;
+   background-color: white;
+   border: 1px solid #333;
 }
 
 #info-container select{
-    display: block;
-    margin: 20px auto;
-    padding: 5px;
-    min-width: 100%;
-    color: #333;
-    font-size: 15px;
-    font-weight: 900;
-    text-align-last: center;
+   display: block;
+   margin: 20px auto;
+   padding: 5px;
+   width: 100%;
+   /* min-width: 10%; */
+   color: #333;
+   font-size: 15px;
+   font-weight: 900;
+   text-align-last: center;
 }
 
 #info-container p{
-    padding: 0 10px;
-    font-weight: 600;
-    line-height: 180%;
+   padding: 0 10px;
+   font-weight: 600;
+   line-height: 180%;
 }
 #info-container p span{
-    font-weight: normal;
+   font-weight: normal;
 }
 
-@media (max-width: 768px) {
-    body{
-        font-size: 12px;
-    }
-    
-    
+
+.citeisBtns, .city{
+   padding: 0.6em;
+   margin: 0.2em;
+   cursor: pointer;
+   border: none;
+   border-radius: 7px;
+   width:12%;
+   height: 20%;
+   opacity: 0.8;
+   font-size: small;
+   font-weight: 700;
+   font-family: 'Lilita One', cursive;
+
+}
+.citeisBtns:hover, 
+.city:hover{
+color: whitesmoke;
+font-size: medium;
+}
+#loading{
+   position: absolute;
+   right: 33%;
+   top: 83%;
+   z-index: 3;
+   font-size: 300%;
+   font-weight: 700;
+}
+.spinner
+{
+   position: absolute;
+   animation: animate1 3s infinite ease-in-out;
+   right: 40%;
+   top: 20%;
+   z-index: 3;
+}
+
+@keyframes animate1 {
+   from {
+   transform: rotate(0deg);
+   }
+   to {
+   transform: rotate(360deg);
+   }
+}
+
+#citeisBtnsContainer{
+   width: 100vw;
+   cursor: pointer;
+   margin-top: -20%;
+}
+
+.line-1{
+   position: relative;
+   top: 50%;  
+   width: 24em;
+   margin: 0 auto;
+   border-right: 2px solid rgba(255,255,255,.75);
+   font-size: 180%;
+   text-align: center;
+   white-space: nowrap;
+   overflow: hidden;
+   transform: translateY(-50%);    
+}
+
+/* Animation */
+.anim-typewriter{
+animation: typewriter  steps(44) 1s 1 normal both,
+            blinkTextCursor 500ms steps(44) infinite normal;
+}
+@keyframes typewriter{
+from{width: 0;}
+to{width: 6em;}
+}
+@keyframes blinkTextCursor{
+from{border-right-color: rgba(255,255,255,.75);}
+to{border-right-color: transparent;}
+}
+
+#spinner-loading{
+   width: 60%;
+   height: 65%;
+   position: absolute;
+   top: 20%;
+   left: 25%;
+   z-index: 2;
 }

@@ -1,0 +1,86 @@
+@media (max-width:600px) {
+    #title{
+        font-size: 200%;
+    }
+    .flex{
+        display: flex;
+        flex-direction: column;
+    }
+    .continentBtnContainer{
+        height: 400px;
+        width: 100%;
+        display: flex;
+        position: relative;
+        left: -25%;
+    }
+    .continents-btn{
+        /* transform: rotate(45deg); */
+        font-size: 12px;
+        font-weight: 900;
+    }
+
+    #europe-btn:hover,
+#asia-btn:hover,
+#australia-btn:hover,
+#northA-btn:hover,
+#americas-btn:hover,
+#africa-btn:hover
+{
+   /* border: 1px black solid ; */
+    color: black;
+    font-size: 12px;
+}
+#myChartContainer{
+    top: -32%;
+    width: 95%;
+}
+.citeisBtns, .city{
+    font-size: 12px;
+    padding:  10px 60px 5px 20px;
+    /* padding-left: 0; */
+    border-radius: 0;
+    border: 2px solid black;
+    text-align: center;
+    margin:auto;
+}
+#citeisBtnsContainer{
+    margin-top: -27rem;
+}
+.citeisBtns:hover, 
+.city:hover{
+font-size: 12px;
+color: brown;
+}
+.continents-btn{
+    display: flex;
+    flex-direction: column;
+}
+.cityCon{
+    padding-left: 5%;
+}
+#americas-btn{
+    color: black;
+}
+#australia-btn{
+    color: black;
+}
+#loading{
+    position: relative;
+    right: 10%;
+}
+.spinner{
+    right: 30%;
+}
+}
+
+@media (min-width:1400px) {
+    #loading{
+        top: 12%;
+        right: 45%;
+
+
+    }
+    .spinner{
+        right: 50%;
+    }
+}

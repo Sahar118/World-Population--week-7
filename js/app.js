@@ -1,180 +1,193 @@
+const continents = ["Africa", "Americas", "Asia", "Europe", "Oceania"];
+let world = {};
 
 
-// https://restcountries.com/#api-endpoints-v2-continent
+const AfricaBtn = document.querySelector('#africa-btn');
+const AmericasBtn = document.querySelector('#americas-btn');
+const AsiaBtn = document.querySelector('#asia-btn');
+const EuropeBtn = document.querySelector('#europe-btn');
+const OceaniaBtn = document.querySelector('#australia-btn');
+const btnsContainer = document.querySelector('.continentBtnContainer');
+const cityButton = document.querySelector('#citeisBtnsContainer');
+const title = document.querySelector('#title');
+const spinner = document.querySelector('.spinner')
+const loading = document.querySelector('#loading')
+const spinnerLoadingdiv = document.querySelector('#spinner-loading')
+const pageStyling = document.querySelector('.p1')
 
-// https://restcountries.com/v3.1/region/europe
-
-
-// fetch('https://restcountries.com/v3.1/region/europe', {
-//      method: 'GET',
-//      headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//      }
-//  })
-//  .then(response => response.json())
-//  .then(response => console.log(JSON.stringify(response)))
-
-// fetch('https://restcountries.com/v3.1/region/africa', {
-//      method: 'GET',
-//      headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//      }
-//  })
-//  .then(response => response.json())
-//  .then(response => console.log(JSON.stringify(response)))
-
-// fetch('https://restcountries.com/v3.1/region/asia', {
-//      method: 'GET',
-//      headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//      }
-//  })
-//  .then(response => response.json())
-//  .then(response => console.log(JSON.stringify(response)))
-
-// fetch('https://restcountries.com/v3.1/region/americas', {
-//      method: 'GET',
-//      headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//      }
-//  })
-//  .then(response => response.json())
-//  .then(response => console.log(JSON.stringify(response)))
-
-
-// fetch('https://restcountries.com/v3.1/region/oceania', {
-//      method: 'GET',
-//      headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//      }
-//  })
-//  .then(response => response.json())
-//  .then(response => console.log(JSON.stringify(response)))
-
-// // !!!!!!!postman:!!!!!!!!
-
-// // get country :
-
-// fetch('https://countriesnow.space/api/v0.1/countries/population', {
-//      method: 'POST',
-//      headers: {
-//         'Accept': 'application/json',
-//         'Content-Type': 'application/json'
-//      },
-//      body: JSON.stringify({ "country": "nigeria" })
-//  })
-//  .then(response => response.json())
-//  .then(response => console.log(JSON.stringify(response)))
-
-
-
-
-
-
-// // get all cities of a country // will get us only cities with population data.. :
-
-//  fetch('https://countriesnow.space/api/v0.1/countries/population/cities/filter', {
-//      method: 'POST',
-//      headers: {
-//         'Accept': 'application/json',
-//          'Content-Type': 'application/json'
-//      },
-//     body: JSON.stringify({
-//      	"limit": 1000,
-// 	    "order": "asc",
-// 	    "orderBy": "name",
-// 	    "country": "nigeria" 
-//      })
-//  })
-//  .then(response => response.json())
-//  .then(response => console.log(JSON.stringify(response)))
-
-
-
-// //get info about a specific city
-
-
-//   fetch('https://countriesnow.space/api/v0.1/countries/population/cities', {
-//      method: 'POST',
-//      headers: {
-//         'Accept': 'application/json',
-//          'Content-Type': 'application/json'
-//      },
-//     body: JSON.stringify({
-//         "city": "Akure"
-//      })
-//  })
-//  .then(response => response.json())
-//  .then(response => console.log(JSON.stringify(response)))
-
-
-
-
-// fetch('https://restcountries.com/v3.1/all')
-// .then(function(res) {
-//     // console.log(res.json());
-//     return res.json();
-// })
-// .then(function(data){
-//     // console.log(data);
-//     initialize(data);
-// })
-// .catch(function(err){
-//     console.log(`Error: ${err}`)
-// })
-
-// Global Variables;
-const countriesList = document.querySelector("#countries")
-
-// each tine a new option is selected option value ad an argument
-// countriesList.addEventListener("change", function(event){
-//     console.log(event.target.value);
-// })
-countriesList.addEventListener("change", event => displayCountryInfo(event.target.value))
-
-function newCountryInfo(event){
-    displayCountryInfo(event.target.value)
+function loadingPage() {
+   spinner.style.display = 'none'
+   loading.style.display = 'none'
+   spinnerLoadingdiv.style.display = 'none'
 }
-let countries; // will contain "fetched" data
-fetch('https://restcountries.com/v2/all')
-.then(res=> res.json())
-.then(data => initialize(data))
-.catch(err => console.log("Error:", err));
+loadingPage()
 
-function initialize(countriesData){
-    countries = countriesData;
-    // the option string will be the innerHTML of the select element.
-    // it will look through each country and add the corresponding options
-    let options = "";
-    for (let i=0; i<countries.length; i++){
-        options += `<option value="${countries[i].alpha3Code}">  ${countries[i].name}</option>`;
+const fetchData = async (url) => {
+   try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return data;
+   } catch (error) {
+      console.log(error);
+   }
+};
+
+const getCountriesData = async () => {
+   for (let i = 0; i < continents.length; i++) {
+      const continentName = continents[i];
+      const currentRegion = await fetchData(`https://restcountries.com/v3.1/region/${continents[i]}`);
+      Object.assign(world, { [continentName]: [] })
+      for (let j = 0; j < currentRegion.length; j++) {
+         if(currentRegion[j].name.common){
+         }
+         const countryCommonName = currentRegion[j].name.common;
+         const countryOfficialName = currentRegion[j].name.official;
+         const countryPopulation = currentRegion[j].population;
+         const neighbors = (currentRegion[j].borders !==undefined ?currentRegion[j].borders.length :0);
+         fillObject(world[continentName],countryOfficialName,countryCommonName,countryPopulation,neighbors,continentName);
+   }
+   }
+};
+
+function fillObject(arr,Offname,CommonName,pop,neighbors,continent){
+   arr.push({
+      CommonName: CommonName,
+      Officialname: Offname,
+      population: pop,
+      continent:continent
+   })
+}
+
+const fetchCityDataFromCountries = async (country) => {
+   try{
+      const res = await fetch('https://countriesnow.space/api/v0.1/countries/population/cities/filter', {
+         method: 'POST',
+         headers: {
+            'Content-Type': 'application/json',
+         },
+         body: JSON.stringify({
+            'limit': 35,
+            'order': "asc",
+            'orderBy': "name",
+            'country': country,
+         }),
+      });
+      const data = await res.json();
+      return data ;
+   }
+   catch(err){
+      console.log(err);
+   }
+};
+
+async function checkCommonOrOfficial(obj){
+   const data = await fetchCityDataFromCountries(obj.CommonName);
+   if(data.error){
+      const response = await fetchCityDataFromCountries(obj.Officialname);
+      return response;
+   }
+   return data;
+}
+
+function createAndAppendCanvas(){
+   const div = document.querySelector('#myChartContainer');
+   div.replaceChildren('');
+   const canvas = document.createElement('canvas');
+   canvas.id = 'myChart';
+   div.appendChild(canvas);
+}
+
+Chart.defaults.color = 'black';
+Chart.defaults.font.size = 12;
+
+function createChart(labels,populationData){
+   
+   createAndAppendCanvas();
+   spinner.style.display ='block'
+   
+   const ctx = document.getElementById('myChart');
+
+   const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+         labels: labels,
+         datasets: [{
+            label: 'population',
+            data: populationData,
+            backgroundColor: 'rgb(5, 107, 5)',
+            borderColor: 'black',
+            borderWidth: 1
+         },
+         ]
+      },
+      options: {
+         scales: {
+            y: {
+               beginAtZero: true
+            }
+         }
+      }
+   });
+   spinner.style.display ='none'
+   loading.style.display = 'none'
+   spinnerLoadingdiv.style.display = 'none'
+}
+
+function bulidCiteisButtons(arr){
+   citeisBtnsContainer.replaceChildren('');
+   arr.forEach((element,idx) => {
+      const button = document.createElement('button');
+      button.classList='citeisBtns';
+      button.style.backgroundColor = randomColors()
+      button.setAttribute('data-id',idx);
+      button.setAttribute('data-country',element.CommonName);
+      button.setAttribute('data-continent',element.continent);
+      button.textContent = element.CommonName;
+      citeisBtnsContainer.appendChild(button);
+   });
+}
+
+
+async function handleCiteisEvents(event){
+   spinner.style.display = 'block'
+      loading.style.display = 'block'
+   spinnerLoadingdiv.style.display = 'block'
+   const btn = event.target.getAttribute('data-id');
+   const btnContinent = event.target.getAttribute('data-continent');
+   const res = await checkCommonOrOfficial(world[btnContinent][btn]);
+   if(res.data){
+      
+      const labels = res.data.map((el)=>{
+         return  el.city });
+      const population = res.data.map((el)=>{
+         return el.populationCounts[0].value });
+      createChart(labels,population);
+      return;
+   }
+   alert('DATA Not Found 😕')
+}
+function handleEvents(event){
+   spinner.style.display = 'block'
+   pageStyling.style.background = 'none'
+   title.textContent='World Population'
+   const labels = world[event.target.textContent].map(el => el.CommonName);
+   const population = world[event.target.textContent].map(el => el.population );
+   createChart(labels,population);
+   bulidCiteisButtons(world[event.target.textContent]);
+}
+
+
+   getCountriesData();
+   btnsContainer.addEventListener('click', handleEvents);
+   cityButton.addEventListener('click', handleCiteisEvents);
+
+
+   function randomColors() {
+      return '#' + Math.floor(Math.random() * 16777215).toString(16);
     }
-    // document.getElementById("countries").innerHTML = options;
-    countriesList.innerHTML = options;
-    displayCountryInfo("AFG")
-//  this function will take the value of the option 
-}
-function displayCountryInfo(countryByAlpha3Code) {
-    const countryData = countries.find(country => country.alpha3Code === countryByAlpha3Code);
-    console.log(countryData);
-    document.getElementById("capital").innerHTML = countryData.capital;
-    document.getElementById("dialing-code").innerHTML =` + ${countryData.callingCodes[0]}` ;
-    document.getElementById("population").innerHTML = countryData.population.toLocaleString('en-us');
-    document.getElementById("currencies").innerHTML = countryData.currencies.map(c => `${c.name} (${c.code})`).join(`, `);
-    document.getElementById("region").innerHTML = countryData.region;
-    document.getElementById("subregion").innerHTML = countryData.subregion;
-    document.querySelector('#flag-container img').src = countryData.flag;
-    document.querySelector('#flag-container img').alt = `Flag of ${countryData.name}`;
 
-}
+    button.onmouseover = function() 
+    {
+        this.style.backgroundColor = randomColors();
+    }
 
-// return the first element in the array 
-setTimeout(()=>{
-    console.log(countries);
-}, 500)
-console.log(countries);
